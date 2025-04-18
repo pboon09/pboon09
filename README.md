@@ -2,8 +2,8 @@
 
 ### 🫡 &nbsp;About Me :
 My name is Nine, and I’m from Thailand. I’m just an ordinary boy who loves robots. I spend most of my time working on my projects and sharing them so everyone can use them and have a guide!
-- 🔭 I’m currently working on **ROS2 and Micro-ROS communication on a Nucleo Board**.
-- 🌱 I’m currently learning **more about ML, DL, and image processing (since I'm still a beginner in this field)**.
+- 🔭 I’m currently working on **Mobile Robot**.
+- 🌱 I’m currently learning **control theory**.
 - ⚡ Fun fact: I love 😸!
 
 ### 🧑‍💻 &nbsp;What I can do :
