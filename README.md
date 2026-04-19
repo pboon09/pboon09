@@ -16,7 +16,7 @@
 ### 👤 About
 
 Robotics & Automation Engineering student at **KMUTT's Institute of Field Robotics (FIBO)**.
-I design and build **autonomous systems end-to-end** — from STM32 firmware and motor control up to ROS 2 navigation stacks. My focus is bridging **control theory** with **real-world robot deployment**.
+Seeking research and study opportunities in robotics and autonomous systems, with particular interest in learning-based control, active perception, motion planning, and autonomous vehicles. Passionate about bridging theoretical control concepts with practical robotic implementations to develop intelligent systems that can operate reliably in real-world environments
 
 | | |
 |---|---|
