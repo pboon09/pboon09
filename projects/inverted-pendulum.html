@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hybrid Energy-LQR Control of a Rotary Inverted Pendulum · Phakin Boonchanachai</title>
+<meta name="description" content="A rotary inverted pendulum that swings itself up from hanging down and then balances upright, on a custom embedded board.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="Hybrid Energy-LQR Control of a Rotary Inverted Pendulum · Phakin Boonchanachai">
+<meta property="og:description" content="A rotary inverted pendulum that swings itself up from hanging down and then balances upright, on a custom embedded board.">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/inverted-pendulum.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/inverted-pendulum/controller-shield-3d.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=e622ca1a">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="../index.html#projects" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/fibo.png" alt=""><span>Institute of Field Robotics (FIBO), KMUTT</span></div>
+      <h1 class="reveal">Hybrid Energy-LQR Control of a Rotary Inverted Pendulum</h1>
+      <p class="d-date reveal">November 2025 – December 2025</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>About the project</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#results"><span class="dot">3</span>Results</a></li><li><a href="#figures"><span class="dot">4</span>Figures</a></li><li><a href="#system"><span class="dot">5</span>System</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  
+  <div class="about-split"><section class="d-sec reveal" id="about-project"><h2>About the project</h2><p class="d-lead">A rotary inverted pendulum that swings itself up from hanging down and then balances upright, on a custom embedded board.</p><p class="">The rotary inverted pendulum is a classic control benchmark because it is nonlinear, underactuated, and unstable. One motor drives a free-swinging link, so lifting and balancing need two different controllers and a safe hand-over between them.</p><p class="">Linear control cannot handle the large swing-up motion. An energy-based controller first raises the pendulum's energy until it reaches the region where LQR can hold it upright.</p><p class="">The project spans modeling, firmware and hardware. The model and mass properties come from the CAD design, the controller runs on an STM32 with a custom shield, and micro-ROS streams live joint data to RViz for comparison with theory.</p></section><div class="side-short reveal"><figure class="short"><div class="short-frame"><iframe src="https://www.youtube-nocookie.com/embed/bAbs72dz500?rel=0" title="Swing-up and LQR balance on the real hardware." loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption>Swing-up and LQR balance on the real hardware.</figcaption></figure></div></div>
+  <div class="stats reveal"><div class="stat"><b>< 0.01 rad/s</b><span>Model versus hardware velocity error</span></div><div class="stat"><b>2</b><span>Controllers with safe switching</span></div></div>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Derive the model</h3><p>Modified DH parameters, a 6×2 Jacobian and Lagrangian dynamics are derived in MATLAB.</p></li><li class="step reveal"><h3>Swing up with energy</h3><p>An energy law, U = kE·ΔE·α̇·cos(α), pumps energy into the pendulum until it nears the top.</p></li><li class="step reveal"><h3>Balance with LQR</h3><p>Near upright, control switches to LQR with gains from the discrete-time Riccati equation.</p></li><li class="step reveal"><h3>Estimate the state</h3><p>A Kalman filter and a low-pass filter estimate joint velocities from the two encoders.</p></li><li class="step reveal"><h3>Build the board</h3><p>A custom PCB adds an 8×8 LED matrix, LCD, SD-card logging, Bluetooth, a watchdog and low-power modes, and streams data to RViz over micro-ROS.</p></li></ol></section>
+  <section class="d-sec reveal" id="results"><h2>Results</h2><ul class="res"><li>The pendulum swings up and balances stably on the real hardware.</li><li>The velocity error between the model and the hardware stays below 0.01 rad/s.</li></ul></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures</h2><div class="figs"><figure><img class="zoom" src="../assets/media/inverted-pendulum/mechanical-design.png" alt="Mechanical design." loading="lazy"><figcaption>Mechanical design.</figcaption></figure><figure><img class="zoom" src="../assets/media/inverted-pendulum/controller-shield-3d.png" alt="Controller shield, 3D view." loading="lazy"><figcaption>Controller shield, 3D view.</figcaption></figure><figure><img class="zoom" src="../assets/media/inverted-pendulum/pcb-top-copper.png" alt="PCB top copper layer." loading="lazy"><figcaption>PCB top copper layer.</figcaption></figure><figure><img class="zoom" src="../assets/media/inverted-pendulum/pcb-bottom-copper.png" alt="PCB bottom copper layer." loading="lazy"><figcaption>PCB bottom copper layer.</figcaption></figure></div></section>
+  
+  
+  <section class="d-sec reveal" id="system"><h2>System</h2><table class="sys"><tr><th>MCU</th><td>STM32 NUCLEO-G474RE</td></tr><tr><th>Actuator</th><td>Brushed DC motor, Cytron MD20A driver</td></tr><tr><th>Sensors</th><td>2 × AMT103-V encoders</td></tr><tr><th>Courses</th><td>Kinematics, Embedded Systems</td></tr></table></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=e622ca1a"></script>
+</body>
+</html>

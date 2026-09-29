@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whole Body Compliance Control for Mobile Manipulators · Phakin Boonchanachai</title>
+<meta name="description" content="Mobile manipulators doing contact work, such as surface finishing or inspection on a wall, must press with a controlled force while following a path that often reaches beyond the arm.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="Whole Body Compliance Control for Mobile Manipulators · Phakin Boonchanachai">
+<meta property="og:description" content="Mobile manipulators doing contact work, such as surface finishing or inspection on a wall, must press with a controlled force while following a path that often reaches beyond the arm.">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/whole-body-compliance.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/whole-body-compliance/control-framework.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=e622ca1a">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="../index.html#publications" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/astar.png" alt=""><span>A*STAR ARTC, Singapore</span></div>
+      <h1 class="reveal">Whole Body Compliance Control for Mobile Manipulators</h1>
+      <p class="d-date reveal">December 2025 – March 2026</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>About the project</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#results"><span class="dot">3</span>Results</a></li><li><a href="#figures"><span class="dot">4</span>Figures</a></li><li><a href="#status"><span class="dot">5</span>Where it stands</a></li><li><a href="#system"><span class="dot">6</span>System</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  <div class="media-top reveal"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/-LLnaRu-Wbs?rel=0" title="Whole Body Compliance Control for Mobile Manipulators video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
+  <section class="d-sec reveal" id="about-project"><h2>About the project</h2><p class="d-lead">Mobile manipulators doing contact work, such as surface finishing or inspection on a wall, must press with a controlled force while following a path that often reaches beyond the arm.</p><p class="">Whole-body controllers usually lack explicit force regulation, and force-capable methods often assume a fixed base or treat the base and arm separately. This controller handles force and motion together on a moving base.</p><p class="">The base and arm are treated as one system. The arm moves first because its motion is cheaper in the optimization, and the base follows when the arm runs out of reach. The test task is a serpentine wall-cleaning path held at 100 N of contact force.</p><p class="">The work was done during a research internship at A*STAR ARTC in Singapore and published at IEEE/ASME AIM 2026.</p></section>
+  <div class="stats reveal"><div class="stat"><b>8.60 N</b><span>Force RMSE, nonholonomic base</span></div><div class="stat"><b>1.35 mm</b><span>Trajectory RMSE, holonomic base</span></div><div class="stat"><b>2.3 ms</b><span>QP solve time</span></div><div class="stat"><b>100 Hz</b><span>Control rate</span></div></div>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Treat base and arm as one robot</h3><p>The mobile base and the UR5e arm are modeled as a single kinematic chain, so their motion is solved together.</p></li><li class="step reveal"><h3>Solve everything in one QP</h3><p>One quadratic program handles trajectory tracking and limits for the whole body at 100 Hz.</p></li><li class="step reveal"><h3>Put force first</h3><p>Force regulation is an asymmetrically weighted soft task. When force and trajectory cannot both be met, force tracking wins.</p></li><li class="step reveal"><h3>Add Cartesian compliance</h3><p>A compliance layer keeps contact stable and avoids problems near singular configurations.</p></li><li class="step reveal"><h3>Compare on two robots</h3><p>The same controller runs unchanged on an omnidirectional RB-Kairos and a differential-drive RB-Theron, against PID force control and admittance control.</p></li></ol></section>
+  <section class="d-sec reveal" id="results"><h2>Results</h2><ul class="res"><li>Force RMSE is 9.29 N on the holonomic base and 8.60 N on the nonholonomic base.</li><li>Trajectory RMSE is 1.35 mm and 2.79 mm respectively.</li><li>The QP solves in about 2.3 ms, well inside the 10 ms control period.</li></ul></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures</h2><div class="figs"><figure><img class="zoom" src="../assets/media/whole-body-compliance/control-framework.png" alt="Control framework." loading="lazy"><figcaption>Control framework.</figcaption></figure><figure><img class="zoom" src="../assets/media/whole-body-compliance/force-tracking.png" alt="Force and tracking error over time." loading="lazy"><figcaption>Force and tracking error over time.</figcaption></figure><figure><img class="zoom" src="../assets/media/whole-body-compliance/force-distribution.png" alt="Contact force distribution." loading="lazy"><figcaption>Contact force distribution.</figcaption></figure></div></section>
+  <section class="d-sec reveal" id="status"><h2>Where it stands</h2><p class="callout">All results come from Gazebo simulation. Hardware validation on the real platforms is the next step.</p></section>
+  
+  <section class="d-sec reveal" id="system"><h2>System</h2><table class="sys"><tr><th>Platforms</th><td>Robotnik RB-Kairos (omnidirectional, 9 DOF) and RB-Theron (differential drive, 8 DOF), each with a UR5e</td></tr><tr><th>Software</th><td>ROS 2 Jazzy, Gazebo</td></tr><tr><th>Control rate</th><td>100 Hz</td></tr><tr><th>Paper</th><td>IEEE/ASME AIM 2026, Genova, Italy</td></tr><tr><th>Program</th><td>A*STAR ARTC, SIPGA research internship</td></tr></table><div class="btns"><a href="https://ieeexplore.ieee.org/document/11658057/" target="_blank" rel="noopener">IEEE Xplore</a></div></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=e622ca1a"></script>
+</body>
+</html>

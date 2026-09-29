@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reinforcement Learning for Wheeled Bipedal Locomotion · Phakin Boonchanachai</title>
+<meta name="description" content="A single reinforcement-learning policy for OTTO that balances, rejects pushes, follows velocity commands, and changes body height.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="Reinforcement Learning for Wheeled Bipedal Locomotion · Phakin Boonchanachai">
+<meta property="og:description" content="A single reinforcement-learning policy for OTTO that balances, rejects pushes, follows velocity commands, and changes body height.">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/wheeled-biped-rl.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=e622ca1a">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="../index.html#projects" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/fibo.png" alt=""><span>Institute of Field Robotics (FIBO), KMUTT</span></div>
+      <h1 class="reveal">Reinforcement Learning for Wheeled Bipedal Locomotion</h1>
+      <p class="d-date reveal">June 2026 – July 2026</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>About the project</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#results"><span class="dot">3</span>Results</a></li><li><a href="#status"><span class="dot">4</span>Where it stands</a></li><li><a href="#system"><span class="dot">5</span>System</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  <div class="media-top reveal"><div class="clips"><figure><video src="../assets/media/wheeled-biped-rl/course-navigation.mp4" poster="../assets/media/wheeled-biped-rl/course-navigation.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption>Course navigation.</figcaption></figure><figure><video src="../assets/media/wheeled-biped-rl/height-control.mp4" poster="../assets/media/wheeled-biped-rl/height-control.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption>Height control.</figcaption></figure><figure><video src="../assets/media/wheeled-biped-rl/spinning.mp4" poster="../assets/media/wheeled-biped-rl/spinning.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption>Spinning.</figcaption></figure></div></div>
+  <section class="d-sec reveal" id="about-project"><h2>About the project</h2><p class="d-lead">A single reinforcement-learning policy for OTTO that balances, rejects pushes, follows velocity commands, and changes body height.</p><p class="">It is the learning-based counterpart to OTTO's model-based controllers, trained in Isaac Lab with the gap to real hardware in mind.</p><p class="">Early velocity policies that were forced to stay upright could not produce thrust and reached only about half the commanded speed, because a wheeled biped has to lean to accelerate. The final policy may lean into acceleration and turns, while a reward keeps its legs close to the robot's analytical balance posture.</p><p class="">The policy only uses signals the real robot can measure, so it never relies on the body's linear velocity. This keeps the same network deployable on hardware without extra estimation.</p></section>
+  <div class="stats reveal"><div class="stat"><b>0% to 0.8%</b><span>Fall rate on training terrain</span></div><div class="stat"><b>70% to 75%</b><span>Of commanded speed tracked</span></div><div class="stat"><b>±10 cm</b><span>Body-height range</span></div><div class="stat"><b>50 Hz</b><span>Policy rate</span></div></div>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Define the interface</h3><p>The policy reads a 28-dimensional observation and outputs 6 actions at 50 Hz, position targets for the legs and torques for the wheels.</p></li><li class="step reveal"><h3>Train skills in stages</h3><p>Balance, velocity, height and terrain are trained in order, each warm-started from the last, then fused into one policy.</p></li><li class="step reveal"><h3>Randomize for transfer</h3><p>Friction, mass, actuator gains and random pushes vary during training so the policy does not overfit the simulator.</p></li><li class="step reveal"><h3>Evaluate across commands</h3><p>The policy is tested over the full command range, including the hardest case of reverse drive with a full spin.</p></li></ol></section>
+  <section class="d-sec reveal" id="results"><h2>Results</h2><ul class="res"><li>The fall rate is 0% to 0.8% on training terrain and 8.6% in the reverse-drive plus full-spin case.</li><li>Velocity tracking reaches about 70% to 75% of the command.</li><li>Body height can be controlled over ±10 cm, limited by the knee range.</li></ul></section>
+  
+  <section class="d-sec reveal" id="status"><h2>Where it stands</h2><p class="callout">Everything runs in simulation so far. The blind terrain policy still falls on drops and cliffs outside its training data. Sim-to-sim checks and hardware deployment come next.</p></section>
+  
+  <section class="d-sec reveal" id="system"><h2>System</h2><table class="sys"><tr><th>Simulator</th><td>Isaac Lab on Isaac Sim 5.1</td></tr><tr><th>Algorithm</th><td>PPO (rsl_rl)</td></tr><tr><th>Policy</th><td>28 observations, 6 actions, 50 Hz</td></tr><tr><th>Training GPU</th><td>RTX 4070 Ti SUPER, 16 GB</td></tr></table></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=e622ca1a"></script>
+</body>
+</html>

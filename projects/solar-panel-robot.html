@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solar Panel Cleaning and Transport Robots, EGAT Sirindhorn Dam · Phakin Boonchanachai</title>
+<meta name="description" content="Two robots for the floating solar farm at Sirindhorn Dam, built for the Electricity Generating Authority of Thailand (EGAT).">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="Solar Panel Cleaning and Transport Robots, EGAT Sirindhorn Dam · Phakin Boonchanachai">
+<meta property="og:description" content="Two robots for the floating solar farm at Sirindhorn Dam, built for the Electricity Generating Authority of Thailand (EGAT).">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/solar-panel-robot.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/solar-panel-robot/transport-test-kit.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=e622ca1a">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="../index.html#projects" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/fibo.png" alt=""><span>Institute of Field Robotics (FIBO), KMUTT</span></div>
+      <h1 class="reveal">Solar Panel Cleaning and Transport Robots, EGAT Sirindhorn Dam</h1>
+      <p class="d-date reveal">August 2024 – November 2025</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>About the project</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#figures"><span class="dot">3</span>Figures</a></li><li><a href="#system"><span class="dot">4</span>System</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  <div class="media-top reveal"><div class="clips"><figure><video src="../assets/media/solar-panel-robot/cleaning-robot.mp4" poster="../assets/media/solar-panel-robot/cleaning-robot.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption>Cleaning robot on the floating solar farm.</figcaption></figure><figure><video src="../assets/media/solar-panel-robot/transport-robot.mp4" poster="../assets/media/solar-panel-robot/transport-robot.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption>Transport robot test.</figcaption></figure></div></div>
+  <section class="d-sec reveal" id="about-project"><h2>About the project</h2><p class="d-lead">Two robots for the floating solar farm at Sirindhorn Dam, built for the Electricity Generating Authority of Thailand (EGAT). One cleans the solar panels, and the other transports solar panels across the site.</p><p class="">The robots have to work across a large, open site on the water, with reliable docking and no one driving them.</p><p class="">The work covers the robot's movement, docking, and autonomous navigation. ROS 2 connects to the embedded controller through micro-ROS, which runs PID wheel-speed control, and Nav2 navigates using SLAM with a 2D LiDAR and RTK GNSS.</p></section>
+  <div class="stats reveal"><div class="stat"><b>ROS 2</b><span>With Nav2 and micro-ROS</span></div></div>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Map the site</h3><p>SLAM with a 2D LiDAR builds the map, and RTK GNSS anchors it outdoors.</p></li><li class="step reveal"><h3>Connect the embedded controller</h3><p>A micro-ROS bridge links ROS 2 to the embedded controller, which runs PID wheel-speed control.</p></li><li class="step reveal"><h3>Navigate and dock</h3><p>Nav2 drives the robot autonomously, and dedicated movement and docking systems handle the panel transport.</p></li></ol></section>
+  
+  <section class="d-sec reveal" id="figures"><h2>Figures</h2><div class="figs"><figure><img class="zoom" src="../assets/media/solar-panel-robot/transport-test-kit.jpg" alt="Transport robot test kit." loading="lazy"><figcaption>Transport robot test kit.</figcaption></figure></div></section>
+  
+  
+  <section class="d-sec reveal" id="system"><h2>System</h2><table class="sys"><tr><th>Client</th><td>Electricity Generating Authority of Thailand (EGAT)</td></tr><tr><th>Site</th><td>Sirindhorn Dam floating solar farm</td></tr><tr><th>Software</th><td>ROS 2, Nav2, micro-ROS</td></tr><tr><th>Sensors</th><td>2D LiDAR, RTK GNSS</td></tr><tr><th>Role</th><td>Research Assistant</td></tr></table></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=e622ca1a"></script>
+</body>
+</html>

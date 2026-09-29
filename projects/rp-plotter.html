@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RP Plotter, a 2-DOF Robotic Arm with Revolute and Prismatic Joints · Phakin Boonchanachai</title>
+<meta name="description" content="A 2-DOF plotting arm with one revolute and one prismatic joint that places a pen accurately in polar coordinates.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="RP Plotter, a 2-DOF Robotic Arm with Revolute and Prismatic Joints · Phakin Boonchanachai">
+<meta property="og:description" content="A 2-DOF plotting arm with one revolute and one prismatic joint that places a pen accurately in polar coordinates.">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/rp-plotter.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/rp-plotter/control-system-diagram.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=e622ca1a">
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="../index.html#projects" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/fibo.png" alt=""><span>Institute of Field Robotics (FIBO), KMUTT</span></div>
+      <h1 class="reveal">RP Plotter, a 2-DOF Robotic Arm with Revolute and Prismatic Joints</h1>
+      <p class="d-date reveal">January 2025 – May 2025</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>About the project</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#results"><span class="dot">3</span>Results</a></li><li><a href="#figures"><span class="dot">4</span>Figures</a></li><li><a href="#system"><span class="dot">5</span>System</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  
+  <div class="about-split"><section class="d-sec reveal" id="about-project"><h2>About the project</h2><p class="d-lead">A 2-DOF plotting arm with one revolute and one prismatic joint that places a pen accurately in polar coordinates.</p><p class="">Both joints need precise, coordinated position control, driven from an STM32 with real-time MODBUS communication.</p><p class="">The machine is built like a small industrial cell. A control cabinet holds the power supplies, pilot lamps, switches, and an emergency stop, and every motor driver is opto-isolated from the controller.</p><p class="">Each joint runs cascaded position and velocity loops with feedforward, and a Kalman filter estimates velocity from the encoders. Steady-state error stays below 0.15 mm on the prismatic joint and below 0.5° on the revolute joint.</p></section><div class="side-short reveal"><figure class="short"><div class="short-frame"><iframe src="https://www.youtube-nocookie.com/embed/vmvboh1SdSk?rel=0" title="Drawing mode test." loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption>Drawing mode test.</figcaption></figure></div></div>
+  <div class="stats reveal"><div class="stat"><b>< 0.15 mm</b><span>Prismatic steady-state error</span></div><div class="stat"><b>< 0.5°</b><span>Revolute steady-state error</span></div><div class="stat"><b>2</b><span>Degrees of freedom</span></div></div>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Design the arm</h3><p>The full mechanical structure and the electrical system were designed from scratch, with a control cabinet holding the pilot lamps, switches and emergency stop.</p></li><li class="step reveal"><h3>Build the hardware</h3><p>A Nucleo G474RE reads AMT103-V encoders, a Hall effect current sensor, and photoelectric and proximity sensors. Opto-isolated motor drivers run the revolute and prismatic DC motors, and a solid state relay and emergency switch cut power safely.</p></li><li class="step reveal"><h3>Close the control loops</h3><p>A trajectory generator feeds cascaded position and velocity loops, with reference feedforward and disturbance feedforward. A Kalman filter estimates joint velocity from the encoders.</p></li><li class="step reveal"><h3>Talk to the base system</h3><p>MODBUS links the Nucleo to the base system in real time, while pilot lamps show the machine state.</p></li></ol></section>
+  <section class="d-sec reveal" id="results"><h2>Results</h2><ul class="res"><li>Steady-state error stays below 0.15 mm on the prismatic joint.</li><li>Steady-state error stays below 0.5° on the revolute joint.</li></ul></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures</h2><div class="figs"><figure><img class="zoom" src="../assets/media/rp-plotter/robot.jpg" alt="The RP Plotter and its control cabinet." loading="lazy"><figcaption>The RP Plotter and its control cabinet.</figcaption></figure><figure><img class="zoom" src="../assets/media/rp-plotter/hardware-diagram.png" alt="Hardware diagram." loading="lazy"><figcaption>Hardware diagram.</figcaption></figure><figure><img class="zoom" src="../assets/media/rp-plotter/control-system-diagram.png" alt="Control system diagram." loading="lazy"><figcaption>Control system diagram.</figcaption></figure></div></section>
+  
+  
+  <section class="d-sec reveal" id="system"><h2>System</h2><table class="sys"><tr><th>Controller</th><td>STM32 Nucleo G474RE</td></tr><tr><th>Joints</th><td>1 revolute, 1 prismatic, each driven by a DC motor</td></tr><tr><th>Sensors</th><td>AMT103-V encoders, Hall effect current sensor, photoelectric and proximity sensors</td></tr><tr><th>Control</th><td>Cascaded position and velocity loops with feedforward and a Kalman filter</td></tr><tr><th>Safety</th><td>Emergency switch, solid state relay, opto-isolated drivers, status pilot lamps</td></tr><tr><th>Power</th><td>220 V AC input to 12 V 20 A and 5 V 5 A supplies</td></tr><tr><th>Communication</th><td>MODBUS to the base system</td></tr></table></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=e622ca1a"></script>
+</body>
+</html>
