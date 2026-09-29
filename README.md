@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="mailto:pboonchanachai@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
+  <a href="https://pboon09.github.io/pboon09/"><img src="https://img.shields.io/badge/Website-F45E04?style=for-the-badge&logo=googlechrome&logoColor=white"/></a>
   <a href="https://www.linkedin.com/in/phakin-boonchanachai/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
 </p>
 
@@ -18,10 +19,17 @@
 - 🎓 Studying **B.Eng. Robotics & Automation** at the Institute of Field Robotics (**FIBO**), KMUTT, graduating **2027**
 - 📊 GPA **3.94 / 4.00**, awarded the **Petchra Pra Jom Klao Scholarship for Innovation**
 - 🔭 I work across the **full robotics stack**, from sensor driver firmware up to high-level autonomy
-- 🛠️ Projects have ranged over **mobile robots, manipulation, control, deep RL, and embedded firmware**
+- 🛠️ Projects have ranged over **mobile robots, wheeled and legged locomotion, manipulation, control, deep RL, and embedded firmware**
 - 🎯 My goal is to build **robots that become part of everyday life, and are for once actually intelligent**
 - 💼 Open to **PhD positions and robotics engineering roles**
 - 📫 Reach me at **pboonchanachai@gmail.com**
+
+---
+
+### 📄 Publications
+
+- **Whole Body Compliance Control for Mobile Manipulators**, IEEE/ASME AIM 2026, Genova, Italy. [DOI](https://doi.org/10.1109/AIM65483.2026.11658057)
+- **OTTO: Dynamics and Control of Wheeled Bipedal Somersaulting Robot**, submitted to IEEE ICRA 2027
 
 ---
 
@@ -37,7 +45,7 @@
 > Nav2 · A\*, Dijkstra, NavFn · DWB, MPPI · Pure Pursuit, Stanley · waypoint missions · recovery behaviors
 
 **🎛️ Control & Estimation**
-> PID · cascade · LQR · MPC · Kalman & EKF · state-space design · trajectory generation · system ID · underactuated control
+> PID · cascade · LQR · MPC · Kalman & EKF · state-space design · trajectory generation · trajectory optimization · disturbance observer · system ID · underactuated control
 
 **🦿 Kinematics & Manipulation**
 > Forward/inverse kinematics · Jacobian-based control · Robotics Toolbox (Corke) · mobile manipulation
@@ -46,13 +54,13 @@
 > STM32 (Nucleo, HAL, CubeIDE) · ESP32 · Arduino · micro-ROS · DC/BLDC/stepper/servo/CyberGear · CAN, MODBUS, UART, SPI, I²C · KiCad PCB · hardware-in-the-loop
 
 **🤖 Reinforcement Learning & AI**
-> Deep reinforcement learning for robot control (FRA503) · LLM agents (Gemini, Llama 3.1) · retrieval-augmented pipelines · vision-based detection
+> Deep RL (PPO) for wheeled-bipedal and quadruped (Unitree Go2) locomotion · curriculum learning · reward shaping · domain randomization · LLM agents (Gemini, Llama 3.1) · retrieval-augmented pipelines · vision-based detection
 
 **🏎️ Autonomous Vehicles**
-> F1TENTH autonomous racing · CARVER platform · RTK-GNSS + IMU fusion · autonomous mobile robots (FRA532)
+> F1TENTH autonomous racing · CARVER platform · RTK-GNSS + IMU fusion · Ackermann navigation with 3D lidar localization
 
 **🎮 Simulation & Robotics Software**
-> Gazebo (Classic & Ignition) · Isaac Sim · RViz2 · URDF/Xacro · ROS 2 (Humble, Iron, Jazzy) · custom msgs & actions · TF2 · colcon · Docker · Linux
+> Gazebo (Classic & Ignition) · Isaac Sim & Isaac Lab · RViz2 · URDF/Xacro · ROS 2 (Humble, Iron, Jazzy) · custom msgs & actions · TF2 · colcon · Docker · Linux
 
 ---
 
@@ -66,6 +74,7 @@
 ![micro--ROS](https://img.shields.io/badge/micro--ROS-22314E?style=flat&logo=ros&logoColor=white)
 ![Gazebo](https://img.shields.io/badge/Gazebo-FF6C00?style=flat&logo=gazebo&logoColor=white)
 ![Isaac Sim](https://img.shields.io/badge/Isaac%20Sim-76B900?style=flat&logo=nvidia&logoColor=white)
+![Isaac Lab](https://img.shields.io/badge/Isaac%20Lab-76B900?style=flat&logo=nvidia&logoColor=white)
 ![RViz2](https://img.shields.io/badge/RViz2-22314E?style=flat&logo=ros&logoColor=white)
 
 **Sensors**
@@ -78,6 +87,7 @@
 **Controllers & Actuators**
 ![STM32](https://img.shields.io/badge/STM32-03234B?style=flat&logo=stmicroelectronics&logoColor=white)
 ![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=flat&logo=espressif&logoColor=white)
+![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-A22846?style=flat&logo=raspberrypi&logoColor=white)
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white)
 ![CyberGear](https://img.shields.io/badge/CyberGear%20Actuator-4A4A4A?style=flat)
 ![BLDC](https://img.shields.io/badge/BLDC%20%2F%20Stepper%20%2F%20Servo-4A4A4A?style=flat)
@@ -100,6 +110,6 @@
 ### 📈 GitHub Activity
 
 <p align="center">
-  <a href="https://github.com/pboon09"><img height="165" src="https://github-stats-extended.vercel.app/api?username=pboon09&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&number_format=long&show=prs_merged,reviews&title_color=A9743F&text_color=6B5B4B&icon_color=8C6239&bg_color=00000000&custom_title=GitHub%20Statistics"/></a>
-  <a href="https://github.com/pboon09"><img height="165" src="https://github-stats-extended.vercel.app/api/top-langs/?username=pboon09&layout=compact&langs_count=8&hide_border=true&title_color=A9743F&text_color=6B5B4B&icon_color=8C6239&bg_color=00000000&custom_title=Top%20Languages"/></a>
+  <a href="https://github.com/pboon09"><img height="200" src="https://github-stats-extended.vercel.app/api?username=pboon09&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&number_format=long&show=prs_merged,reviews&title_color=A9743F&text_color=6B5B4B&icon_color=8C6239&bg_color=00000000&custom_title=GitHub%20Statistics"/></a>
+  <a href="https://github.com/pboon09"><img height="200" src="https://github-stats-extended.vercel.app/api/top-langs/?username=pboon09&layout=compact&langs_count=8&hide_border=true&title_color=A9743F&text_color=6B5B4B&icon_color=8C6239&bg_color=00000000&custom_title=Top%20Languages"/></a>
 </p>
