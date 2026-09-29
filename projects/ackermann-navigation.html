@@ -10,11 +10,11 @@
 <meta property="og:title" content="Autonomous Ackermann Navigation with 3D LiDAR Localization · Phakin Boonchanachai">
 <meta property="og:description" content="Autonomous navigation for CARVER, an Ackermann-steered mobile robot, built for the Advanced Robotic Control and Simulation with ROS 2 course.">
 <meta property="og:url" content="https://pboon09.github.io/pboon09/projects/ackermann-navigation.html">
-<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/ackermann-navigation/system-architecture.png">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/ackermann-navigation/thumbnail.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f45e04">
 <link rel="icon" href="../assets/favicon.png">
-<link rel="stylesheet" href="../assets/style.css?v=e622ca1a">
+<link rel="stylesheet" href="../assets/style.css?v=c70fcb89">
 </head>
 <body>
 <div class="progress" aria-hidden="true"></div>
@@ -47,7 +47,7 @@
 <div class="page-grid">
 <aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>About the project</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#figures"><span class="dot">3</span>Figures</a></li><li><a href="#system"><span class="dot">4</span>System</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
 <main class="wrap narrow">
-  <div class="media-top reveal"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/jSdKrPDQrZs?rel=0" title="Autonomous Ackermann Navigation with 3D LiDAR Localization video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
+  <div class="media-top reveal"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/jSdKrPDQrZs?rel=0&amp;autoplay=1&amp;mute=1&amp;playsinline=1" title="Autonomous Ackermann Navigation with 3D LiDAR Localization video" loading="lazy" allow="autoplay; accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
   <section class="d-sec reveal" id="about-project"><h2>About the project</h2><p class="d-lead">Autonomous navigation for CARVER, an Ackermann-steered mobile robot, built for the Advanced Robotic Control and Simulation with ROS 2 course.</p><p class="">A car-like robot cannot turn in place, so path following depends on steering geometry, and localization has to hold up along curved paths.</p><p class="">Localization runs on a Livox 3D LiDAR with the MOLA package, and micro-ROS firmware on STM32 boards handles steering, sensing, and the driver interface. Three path followers, Pure Pursuit, Stanley, and a combination of the two, are compared on the robot to see which keeps CARVER on its path most accurately and smoothly.</p></section>
   <div class="stats reveal"><div class="stat"><b>3</b><span>Path followers compared</span></div><div class="stat"><b>3D</b><span>LiDAR localization with MOLA</span></div></div>
   <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Localize with 3D LiDAR</h3><p>A Livox 3D LiDAR and its IMU feed the MOLA LiDAR localization package, which tracks the robot against a prebuilt map and publishes its pose.</p></li><li class="step reveal"><h3>Follow the path</h3><p>The controller node reads the path and the pose, then runs Pure Pursuit, Stanley, or a combination of the two to output a target speed and steering angle.</p></li><li class="step reveal"><h3>Switch between manual and autonomous</h3><p>A mode node chooses between the controller output and manual commands from the accelerator handle, so a driver can switch to manual control.</p></li><li class="step reveal"><h3>Drive the hardware with micro-ROS</h3><p>STM32 boards running micro-ROS read the BNO055 IMU, close the steering loop with an absolute encoder and PWM motor driver, and handle the driver interface with its emergency switch and lights. An ODrive S1 Pro runs the drive motor from the velocity setpoint.</p></li><li class="step reveal"><h3>Compare the controllers</h3><p>Each path follower is measured and compared for how accurately and smoothly it keeps CARVER on its path.</p></li></ol></section>
@@ -55,11 +55,11 @@
   
   
   
-  <section class="d-sec reveal" id="figures"><h2>Figures</h2><div class="figs"><figure><img class="zoom" src="../assets/media/ackermann-navigation/system-architecture.png" alt="ROS 2 system architecture." loading="lazy"><figcaption>ROS 2 system architecture.</figcaption></figure></div></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures</h2><div class="figs"><div class="fig-row" style="grid-template-columns:0.6667fr 0.5625fr 0.5625fr"><figure><img class="zoom" src="../assets/media/ackermann-navigation/carver-robot.jpg" alt="CARVER." loading="lazy"><figcaption>CARVER.</figcaption></figure><figure><video src="../assets/media/ackermann-navigation/fpv.mp4" poster="../assets/media/ackermann-navigation/fpv.jpg" controls autoplay muted loop playsinline preload="metadata"></video><figcaption>First-person view while driving.</figcaption></figure><figure><img class="zoom" src="../assets/media/ackermann-navigation/fibo-point-cloud-map.jpg" alt="Point cloud map of FIBO." loading="lazy"><figcaption>Point cloud map of FIBO.</figcaption></figure></div><figure><video src="../assets/media/ackermann-navigation/map-building.mp4" poster="../assets/media/ackermann-navigation/map-building.jpg" controls autoplay muted loop playsinline preload="metadata"></video><figcaption>Building the map.</figcaption></figure><figure><img class="zoom" src="../assets/media/ackermann-navigation/system-architecture.png" alt="ROS 2 system architecture." loading="lazy"><figcaption>ROS 2 system architecture.</figcaption></figure><figure><img class="zoom" src="../assets/media/ackermann-navigation/combined-controller-path.png" alt="Combined Pure Pursuit and Stanley on the FIBO path." loading="lazy"><figcaption>Combined Pure Pursuit and Stanley on the FIBO path.</figcaption></figure></div></section>
   <section class="d-sec reveal" id="system"><h2>System</h2><table class="sys"><tr><th>Robot</th><td>CARVER, Ackermann steering</td></tr><tr><th>Sensors</th><td>Livox 3D LiDAR, BNO055 IMU, absolute steering encoder</td></tr><tr><th>Localization</th><td>MOLA LiDAR localization on a prebuilt map</td></tr><tr><th>Controllers</th><td>Pure Pursuit, Stanley, combined Pure Pursuit and Stanley</td></tr><tr><th>Drive</th><td>ODrive S1 Pro for the drive motor, PWM motor driver for steering</td></tr><tr><th>Embedded</th><td>STM32 boards with micro-ROS</td></tr><tr><th>Software</th><td>ROS 2, micro-ROS, RViz</td></tr><tr><th>Course</th><td>Advanced Robotic Control and Simulation with ROS 2</td></tr></table></section>
 </main>
 </div>
 <footer>© 2026 Phakin Boonchanachai</footer>
-<script src="../assets/site.js?v=e622ca1a"></script>
+<script src="../assets/site.js?v=c70fcb89"></script>
 </body>
 </html>

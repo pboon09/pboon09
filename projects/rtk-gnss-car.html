@@ -10,11 +10,11 @@
 <meta property="og:title" content="RTK-GNSS Navigation for a 1/5-Scale Autonomous Car · Phakin Boonchanachai">
 <meta property="og:description" content="Autonomous outdoor navigation for a 1/5-scale RC car, built during an internship at Gensurv Robotics.">
 <meta property="og:url" content="https://pboon09.github.io/pboon09/projects/rtk-gnss-car.html">
-<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/rtk-gnss-car/system-architecture.png">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/rtk-gnss-car/flipbot.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f45e04">
 <link rel="icon" href="../assets/favicon.png">
-<link rel="stylesheet" href="../assets/style.css?v=e622ca1a">
+<link rel="stylesheet" href="../assets/style.css?v=c70fcb89">
 </head>
 <body>
 <div class="progress" aria-hidden="true"></div>
@@ -47,18 +47,18 @@
 <div class="page-grid">
 <aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>About the project</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#results"><span class="dot">3</span>Results</a></li><li><a href="#figures"><span class="dot">4</span>Figures</a></li><li><a href="#system"><span class="dot">5</span>System</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
 <main class="wrap narrow">
-  <div class="media-top reveal"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/L6Y0ubYP4co?rel=0" title="RTK-GNSS Navigation for a 1/5-Scale Autonomous Car video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
+  <div class="media-top reveal"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/L6Y0ubYP4co?rel=0&amp;autoplay=1&amp;mute=1&amp;playsinline=1" title="RTK-GNSS Navigation for a 1/5-Scale Autonomous Car video" loading="lazy" allow="autoplay; accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
   <section class="d-sec reveal" id="about-project"><h2>About the project</h2><p class="d-lead">Autonomous outdoor navigation for a 1/5-scale RC car, built during an internship at Gensurv Robotics.</p><p class="">Lane-level driving outdoors needs position accuracy far beyond standard GPS, plus a map of where the lanes are.</p><p class="">The car, called Flipbot, carries a SparkFun RTK Express receiver and a WitMotion yaw sensor, and an extended Kalman filter fuses them into its pose. A map processor turns OpenStreetMap or Lanelet2 maps into a path, and the path follower drives the car over CAN bus. A PS5 controller can take over through twist_mux for manual driving.</p><p class="">Pure Pursuit, Stanley, and a combined controller were compared on the real car, and localization stayed below 10 cm outdoors.</p></section>
   <div class="stats reveal"><div class="stat"><b>< 10 cm</b><span>Outdoor localization accuracy</span></div><div class="stat"><b>3</b><span>Path followers compared</span></div><div class="stat"><b>1/5</b><span>Vehicle scale</span></div></div>
   <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Get centimeter-level position</h3><p>RTK GNSS gives the position, and an extended Kalman filter fuses it into the vehicle state in real time.</p></li><li class="step reveal"><h3>Use HD maps</h3><p>Lanelet2 HD maps define the lanes and routes the car follows.</p></li><li class="step reveal"><h3>Compare controllers</h3><p>Pure Pursuit, Stanley and a combined controller are implemented and compared on the real car.</p></li><li class="step reveal"><h3>Make it safe and deployable</h3><p>CAN bus drives the motor and steering servo, and the ROS 2 system runs in Docker with safety supervisors.</p></li></ol></section>
   <section class="d-sec reveal" id="results"><h2>Results</h2><ul class="res"><li>Localization accuracy stayed below 10 cm in real outdoor conditions.</li></ul></section>
-  <section class="d-sec reveal" id="figures"><h2>Figures</h2><div class="figs"><figure><img class="zoom" src="../assets/media/rtk-gnss-car/system-architecture.png" alt="ROS 2 system architecture." loading="lazy"><figcaption>ROS 2 system architecture.</figcaption></figure></div></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures</h2><div class="figs"><figure><img class="zoom" src="../assets/media/rtk-gnss-car/flipbot.jpg" alt="Flipbot, the 1/5-scale car." loading="lazy"><figcaption>Flipbot, the 1/5-scale car.</figcaption></figure><figure><img class="zoom" src="../assets/media/rtk-gnss-car/system-architecture.png" alt="ROS 2 system architecture." loading="lazy"><figcaption>ROS 2 system architecture.</figcaption></figure><figure><img class="zoom" src="../assets/media/rtk-gnss-car/pure-pursuit-path.png" alt="Pure Pursuit path following." loading="lazy"><figcaption>Pure Pursuit path following.</figcaption></figure></div></section>
   
   
   <section class="d-sec reveal" id="system"><h2>System</h2><table class="sys"><tr><th>Vehicle</th><td>Flipbot, a 1/5-scale RC car</td></tr><tr><th>Localization</th><td>SparkFun RTK Express GNSS and WitMotion HWT101CT yaw sensor, fused with an EKF</td></tr><tr><th>Maps</th><td>OpenStreetMap files or Lanelet2 maps, processed into a path</td></tr><tr><th>Motor interface</th><td>CAN bus through a CANable V2.0 Pro adapter</td></tr><tr><th>Manual control</th><td>PS5 controller through twist_mux</td></tr><tr><th>Software</th><td>ROS 2, Docker</td></tr><tr><th>Role</th><td>Robotics Software Engineer Intern</td></tr></table></section>
 </main>
 </div>
 <footer>© 2026 Phakin Boonchanachai</footer>
-<script src="../assets/site.js?v=e622ca1a"></script>
+<script src="../assets/site.js?v=c70fcb89"></script>
 </body>
 </html>

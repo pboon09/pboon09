@@ -40,15 +40,43 @@ if (zoomable.length) {
   const box = document.createElement('div');
   box.className = 'lightbox';
   box.setAttribute('role', 'dialog');
-  box.innerHTML = '<img alt="">';
+  box.innerHTML = '<img alt=""><p class="lb-hint">Click the image to zoom. Click outside or press Esc to close.</p>';
   document.body.append(box);
   const big = box.querySelector('img');
-  const close = () => box.classList.remove('on');
+  const close = () => { box.classList.remove('on', 'zoomed'); document.body.style.overflow = ''; };
   zoomable.forEach((img) => img.addEventListener('click', () => {
     big.src = img.src;
     big.alt = img.alt;
+    box.classList.remove('zoomed');
     box.classList.add('on');
+    document.body.style.overflow = 'hidden';
   }));
+  let drag = null;
+  big.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (drag && drag.moved) return;
+    const r = big.getBoundingClientRect();
+    const fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+    box.classList.toggle('zoomed');
+    if (box.classList.contains('zoomed')) {
+      // keep the clicked point under the cursor after zooming in
+      box.scrollLeft = fx * big.offsetWidth - e.clientX;
+      box.scrollTop = fy * big.offsetHeight - e.clientY;
+    }
+  });
+  big.addEventListener('mousedown', (e) => {
+    if (!box.classList.contains('zoomed')) return;
+    drag = { x: e.clientX, y: e.clientY, sl: box.scrollLeft, st: box.scrollTop, moved: false };
+    e.preventDefault();
+  });
+  addEventListener('mousemove', (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 4) drag.moved = true;
+    box.scrollLeft = drag.sl - dx;
+    box.scrollTop = drag.st - dy;
+  });
+  addEventListener('mouseup', () => setTimeout(() => { drag = null; }, 0));
   box.addEventListener('click', close);
   addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 }

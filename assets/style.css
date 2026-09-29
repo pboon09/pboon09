@@ -140,6 +140,11 @@ section { padding: 56px 0 8px; }
 .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
 .thumb.diagram { background: #fff; }
 .thumb.diagram img { object-fit: contain; padding: 8px; }
+/* portrait images are shown whole instead of cropped to the 16:9 card */
+.thumb.cutout { background: transparent; }
+.thumb.cutout img { object-fit: contain; padding: 8px; }
+.thumb.fit { background: var(--soft); }
+.thumb.fit img { object-fit: contain; }
 .thumb.empty { background: var(--soft) url("logo.png") center / 38% no-repeat; }
 .proj:hover .thumb img { transform: scale(1.04); }
 .thumb::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--logo); transition: width .35s ease; }
@@ -240,7 +245,11 @@ figcaption { font-size: 18px; color: var(--muted); margin-top: 10px; text-align:
 .short-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 .figs { display: grid; grid-template-columns: 1fr; gap: 28px; }
 .figs figure { margin: 0; }
-.figs img { max-height: 620px; width: auto; }
+/* column widths are set in proportion to each item's aspect ratio, so a row shares one height */
+.fig-row { display: grid; gap: 16px; align-items: start; }
+.media-top .short { width: min(100%, 320px); margin: 0 auto; }
+.figs img, .figs video { width: 100%; height: auto; max-height: none; display: block; background: #000; }
+.figs img { background: transparent; }
 img.zoom { cursor: zoom-in; }
 .lightbox {
   position: fixed; inset: 0; z-index: 50; background: rgb(20 14 10 / .88);
@@ -248,7 +257,11 @@ img.zoom { cursor: zoom-in; }
   opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s;
 }
 .lightbox.on { opacity: 1; visibility: visible; }
-.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; }
+.lightbox img { max-width: 100%; max-height: calc(100% - 32px); object-fit: contain; background: #fff; cursor: zoom-in; }
+.lightbox .lb-hint { position: fixed; bottom: 10px; left: 0; right: 0; margin: 0; text-align: center; color: #eee; font-size: 14px; pointer-events: none; }
+.lightbox.zoomed { display: block; overflow: auto; padding: 0; }
+.lightbox.zoomed img { max-width: none; max-height: none; width: max(100vw, 2400px); cursor: grab; }
+.lightbox.zoomed .lb-hint { display: none; }
 .callout { padding: 16px 20px; border-left: 4px solid var(--logo); background: var(--tile); }
 .d-list { margin: 0; padding-left: 22px; }
 .d-list li { margin: 8px 0; }
@@ -260,6 +273,7 @@ img.zoom { cursor: zoom-in; }
 .btns a:hover { background: var(--link); color: var(--tile); text-decoration: none; }
 @media (max-width: 640px) {
   .figs { grid-template-columns: 1fr; }
+  .fig-row { grid-template-columns: 1fr !important; }
   .step { padding-left: 54px; }
   .stat b { font-size: 26px; }
 }
@@ -343,7 +357,7 @@ img.zoom { cursor: zoom-in; }
 }
 
 /* ---------- rounded corners everywhere ---------- */
-.thumb, .video, .clips video, figure img, .lightbox img,
+.thumb, .video, .clips video, figure img, figure video, .short-frame, .lightbox img,
 .stats, .edu-logo, .tl-logo,
 .btns a, .menu-btn { border-radius: var(--r); }
 .res li, .callout { border-radius: 0 var(--r) var(--r) 0; }

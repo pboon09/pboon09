@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f45e04">
 <link rel="icon" href="../assets/favicon.png">
-<link rel="stylesheet" href="../assets/style.css?v=e622ca1a">
+<link rel="stylesheet" href="../assets/style.css?v=c70fcb89">
 </head>
 <body>
 <div class="progress" aria-hidden="true"></div>
@@ -47,7 +47,7 @@
 <div class="page-grid">
 <aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>About the project</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#results"><span class="dot">3</span>Results</a></li><li><a href="#figures"><span class="dot">4</span>Figures</a></li><li><a href="#status"><span class="dot">5</span>Where it stands</a></li><li><a href="#system"><span class="dot">6</span>System</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
 <main class="wrap narrow">
-  <div class="media-top reveal"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/-LLnaRu-Wbs?rel=0" title="Whole Body Compliance Control for Mobile Manipulators video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
+  <div class="media-top reveal"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/-LLnaRu-Wbs?rel=0&amp;autoplay=1&amp;mute=1&amp;playsinline=1" title="Whole Body Compliance Control for Mobile Manipulators video" loading="lazy" allow="autoplay; accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
   <section class="d-sec reveal" id="about-project"><h2>About the project</h2><p class="d-lead">Mobile manipulators doing contact work, such as surface finishing or inspection on a wall, must press with a controlled force while following a path that often reaches beyond the arm.</p><p class="">Whole-body controllers usually lack explicit force regulation, and force-capable methods often assume a fixed base or treat the base and arm separately. This controller handles force and motion together on a moving base.</p><p class="">The base and arm are treated as one system. The arm moves first because its motion is cheaper in the optimization, and the base follows when the arm runs out of reach. The test task is a serpentine wall-cleaning path held at 100 N of contact force.</p><p class="">The work was done during a research internship at A*STAR ARTC in Singapore and published at IEEE/ASME AIM 2026.</p></section>
   <div class="stats reveal"><div class="stat"><b>8.60 N</b><span>Force RMSE, nonholonomic base</span></div><div class="stat"><b>1.35 mm</b><span>Trajectory RMSE, holonomic base</span></div><div class="stat"><b>2.3 ms</b><span>QP solve time</span></div><div class="stat"><b>100 Hz</b><span>Control rate</span></div></div>
   <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Treat base and arm as one robot</h3><p>The mobile base and the UR5e arm are modeled as a single kinematic chain, so their motion is solved together.</p></li><li class="step reveal"><h3>Solve everything in one QP</h3><p>One quadratic program handles trajectory tracking and limits for the whole body at 100 Hz.</p></li><li class="step reveal"><h3>Put force first</h3><p>Force regulation is an asymmetrically weighted soft task. When force and trajectory cannot both be met, force tracking wins.</p></li><li class="step reveal"><h3>Add Cartesian compliance</h3><p>A compliance layer keeps contact stable and avoids problems near singular configurations.</p></li><li class="step reveal"><h3>Compare on two robots</h3><p>The same controller runs unchanged on an omnidirectional RB-Kairos and a differential-drive RB-Theron, against PID force control and admittance control.</p></li></ol></section>
@@ -59,6 +59,6 @@
 </main>
 </div>
 <footer>© 2026 Phakin Boonchanachai</footer>
-<script src="../assets/site.js?v=e622ca1a"></script>
+<script src="../assets/site.js?v=c70fcb89"></script>
 </body>
 </html>
