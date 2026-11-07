@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTTO: Reinforcement Learning · Phakin Boonchanachai</title>
+<meta name="description" content="Stand-up and kneel policies trained around an identified model of the robot.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="OTTO: Reinforcement Learning · Phakin Boonchanachai">
+<meta property="og:description" content="Stand-up and kneel policies trained around an identified model of the robot.">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/otto-rl.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/otto/lr-pipeline.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=wbcc11">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false}]})"></script>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="otto.html" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/fibo.png" alt=""><span>Institute of Field Robotics (FIBO), KMUTT</span></div>
+      <h1 class="reveal">OTTO: Reinforcement Learning</h1>
+      <p class="d-date reveal">June 2026 – Present</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>Overview</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#figures"><span class="dot">3</span>Figures and Video</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  <section class="d-sec reveal" id="about-project"><h2>Overview</h2><p>Two learned policies move OTTO between the floor and its balanced pose. The stand-up policy lifts the robot from any pose it can reach by falling and hands it to the wheel and leg controllers. The kneel policy lowers the balanced robot to its seat and then cuts every torque. Both motions have to be gentle, because a hard motion can break the robot.</p><p>The simulation of OTTO did not match the robot at first, so the policies are trained around a model identified from the real robot, described under Real-to-Sim.</p></section>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Start from the identified model</h3><p>The simulation uses the motor, mass and sensor values identified from the real robot.</p></li><li class="step reveal"><h3>Train in parallel simulation</h3><p>Thousands of simulated robots run in parallel in mjlab, which steps MuJoCo on the graphics processor. Each starts from a stored pose with a randomly changed body, and proximal policy optimization improves the actor.</p></li><li class="step reveal"><h3>Randomize around the identified model</h3><p>The parameters are randomized around the identified nominal model. As the robots succeed, training removes help and widens the random changes.</p></li><li class="step reveal"><h3>Hand off on the robot</h3><p>After training, only the actor runs on the robot. It outputs six numbers at 50 Hz, one for each leg joint and each wheel, and a gate decides when the motion has finished.</p></li></ol></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures and Video</h2><div class="figs"><figure data-r="1.778"><img class="zoom" src="../assets/media/otto/lr-pipeline.png" alt="The training pipeline shared by both policies and the handoff on the robot" loading="lazy"><figcaption>The training pipeline shared by both policies and the handoff on the robot</figcaption></figure></div></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=c70fcb89"></script>
+</body>
+</html>

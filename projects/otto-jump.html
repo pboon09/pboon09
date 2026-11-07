@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTTO: Jump · Phakin Boonchanachai</title>
+<meta name="description" content="A vertical jump whose phases end on measurements instead of a timer.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="OTTO: Jump · Phakin Boonchanachai">
+<meta property="og:description" content="A vertical jump whose phases end on measurements instead of a timer.">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/otto-jump.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/otto/bl-jump_phases.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=wbcc11">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false}]})"></script>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="otto.html" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/fibo.png" alt=""><span>Institute of Field Robotics (FIBO), KMUTT</span></div>
+      <h1 class="reveal">OTTO: Jump</h1>
+      <p class="d-date reveal">June 2026 – Present</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>Overview</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#figures"><span class="dot">3</span>Figures and Video</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  <section class="d-sec reveal" id="about-project"><h2>Overview</h2><p>OTTO jumps straight up by pushing off with its knees, folding its legs in the air, and landing back on its wheels. The jump starts from the ICRA 2026 OTTO method and keeps its three phases, take-off, flight and landing.</p><p>That method plans every phase in advance and ends it when its planned time runs out. Here each phase ends on a measurement, because the real lift-off and touchdown do not follow a planned time.</p><p>The ICRA 2026 method is published as P. Buasakorn, S. Vongbunyong and K. Thamrongaphichartkul, "OTTO: Dynamics and Control of Wheeled Bipedal Jumping Robot", IEEE ICRA 2026, pp. 2489 to 2496. DOI <a href="https://doi.org/10.1109/ICRA57385.2026.11696480" target="_blank" rel="noopener">10.1109/ICRA57385.2026.11696480</a>.</p></section>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Push off and brake with the knees</h3><p>Four knee torque laws cover push, brake, free and landing. They start from the electrical power of a knee, because the motors share one bus and a bench supply cannot absorb current. Braking that returns energy raises the bus voltage, and past the wheel drives' voltage limit the wheels disarm and the robot cannot balance after landing.</p></li><li class="step reveal"><h3>Set the take-off speed from the jump height</h3><p>A two-body model, with a lower mass at the wheels and an upper mass along the leg, gives the take-off velocity needed for a commanded height.</p></li><li class="step reveal"><h3>Switch phases on measurements</h3><p>Lift-off and touchdown are detected from the measurements, and each phase hands over to the next when its measurement is reached.</p></li><li class="step reveal"><h3>Plan the flight</h3><p>An aerial trajectory planner moves the legs in flight, and a flight posture controller holds the body.</p></li></ol></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures and Video</h2><div class="figs"><figure data-r="2.217"><img class="zoom" src="../assets/media/otto/bl-jump_phases.png" alt="Leg length over the take-off, flight and landing phases" loading="lazy"><figcaption>Leg length over the take-off, flight and landing phases</figcaption></figure></div></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=c70fcb89"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTTO: Real-to-Sim · Phakin Boonchanachai</title>
+<meta name="description" content="Identifying the motors, mass and sensor offsets so the simulation behaves like the robot.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="OTTO: Real-to-Sim · Phakin Boonchanachai">
+<meta property="og:description" content="Identifying the motors, mass and sensor offsets so the simulation behaves like the robot.">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/otto-real2sim.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/otto/r2s-overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=wbcc11">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false}]})"></script>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="otto.html" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/fibo.png" alt=""><span>Institute of Field Robotics (FIBO), KMUTT</span></div>
+      <h1 class="reveal">OTTO: Real-to-Sim</h1>
+      <p class="d-date reveal">June 2026 – Present</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>Overview</a></li><li><a href="#process"><span class="dot">2</span>Process</a></li><li><a href="#results"><span class="dot">3</span>Results</a></li><li><a href="#figures"><span class="dot">4</span>Figures and Video</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  <section class="d-sec reveal" id="about-project"><h2>Overview</h2><p>The controllers are developed in simulation, so the simulation has to behave like the robot. Three parts of the original model did not. The wheel and leg motors had guessed inertia and friction and no command delay. The encoders and the IMU read angles with a constant offset, so the robot balanced about 7 degrees away from the balance of the model. The robot is also 1.23 kg heavier than the CAD model.</p><p>I built the identification pipeline that measures, fits and fixes each problem.</p></section>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Excite each motor</h3><p>Each motor is commanded with a speed staircase, a torque step, a torque ramp and a torque sine, and the motion is recorded.</p></li><li class="step reveal"><h3>Fit the motor model</h3><p>A MuJoCo model of each motor, with an inertia, LuGre friction and a torque delay, replays the recorded torque. CMA-ES searches for the values that make the simulated motion match the measured motion.</p></li><li class="step reveal"><h3>Measure the angle offsets</h3><p>A leveling measurement on the torso and a ruler at three heights give the true pitch and joint angles, which fix the IMU offset and the encoder offsets.</p></li><li class="step reveal"><h3>Find the missing mass</h3><p>The mass the CAD model lacks is added to the torso as one mass, and its position is chosen so the model balances at the pitch the robot reaches.</p></li><li class="step reveal"><h3>Validate on new signals</h3><p>The robot and the full simulation run the same wheel and leg tests, and the errors are compared.</p></li></ol></section>
+  <section class="d-sec reveal" id="results"><h2>Results</h2><p>The fitted model follows the leg motor closely and the wheel motor less well, and the corrected parameters bring the simulation close to the robot. On the wheel and leg tests, the simulation speed error is 0.11 rad/s on the wheel speed stair and the hip and knee angle errors are 0.012 rad and 0.026 rad.</p><p class="cap"><b>Table 1.</b> Speed error of the motor model, root mean square in rad/s</p><table class="sys data"><tr><th>Signal</th><th>Wheel Original</th><th>Wheel Fitted</th><th>Leg Original</th><th>Leg Fitted</th></tr><tr><td>Torque Steps</td><td>0.97</td><td><b>0.40</b></td><td>1.44</td><td><b>0.13</b></td></tr><tr><td>Torque Ramps</td><td>0.75</td><td><b>0.12</b></td><td>1.36</td><td><b>0.06</b></td></tr><tr><td>Torque Sines</td><td>1.11</td><td><b>0.77</b></td><td>1.81</td><td><b>0.18</b></td></tr></table><p class="cap"><b>Table 2.</b> Robot parameters before and after identification</p><table class="sys data"><tr><th>Parameter</th><th>Before</th><th>After</th></tr><tr><td>Total Mass</td><td>10.55 Kg</td><td>11.78 Kg</td></tr><tr><td>Torso Mass</td><td>2.27 Kg</td><td>3.49 Kg</td></tr><tr><td>IMU Offset</td><td>0°</td><td>1.46°</td></tr><tr><td>Pitch Setpoint</td><td>7.7°, by Hand</td><td>1.2° on the Robot</td></tr></table><div class="figs"><figure data-r="0.784"><img class="zoom" src="../assets/media/otto/r2s-fit-wheel.png" alt="Fig. 1. Wheel motor, measured and fitted response" loading="lazy"><figcaption>Fig. 1. Wheel motor, measured and fitted response</figcaption></figure><figure data-r="0.784"><img class="zoom" src="../assets/media/otto/r2s-fit-hip.png" alt="Fig. 2. Leg motor, measured and fitted response" loading="lazy"><figcaption>Fig. 2. Leg motor, measured and fitted response</figcaption></figure></div></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures and Video</h2><div class="figs"><figure data-r="2.014"><img class="zoom" src="../assets/media/otto/r2s-overview.png" alt="The real-to-simulation identification pipeline" loading="lazy"><figcaption>The real-to-simulation identification pipeline</figcaption></figure><figure data-r="2.062"><img class="zoom" src="../assets/media/otto/r2s-replay-loop.png" alt="The replay loop used to fit each motor" loading="lazy"><figcaption>The replay loop used to fit each motor</figcaption></figure></div></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=c70fcb89"></script>
+</body>
+</html>

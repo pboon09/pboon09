@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTTO: Baseline Controllers · Phakin Boonchanachai</title>
+<meta name="description" content="Balancing, driving, height and roll leveling on the physical robot.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pboon09">
+<meta property="og:title" content="OTTO: Baseline Controllers · Phakin Boonchanachai">
+<meta property="og:description" content="Balancing, driving, height and roll leveling on the physical robot.">
+<meta property="og:url" content="https://pboon09.github.io/pboon09/projects/otto-baseline.html">
+<meta property="og:image" content="https://pboon09.github.io/pboon09/assets/media/otto/bl-architecture.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f45e04">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/style.css?v=wbcc11">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false}]})"></script>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/logo.png" alt="pboon09"></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav id="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#honors">Honors</a>
+      <a href="../index.html#leadership">Leadership</a>
+      <a href="../index.html#open-source">Open Source</a>
+    </nav>
+  </div>
+</header>
+<div class="band">
+  <div class="wrap narrow band-row">
+    <a class="back" href="otto.html" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="band-text">
+      <div class="d-affil reveal"><img src="../assets/logos/fibo.png" alt=""><span>Institute of Field Robotics (FIBO), KMUTT</span></div>
+      <h1 class="reveal">OTTO: Baseline Controllers</h1>
+      <p class="d-date reveal">June 2026 – Present</p>
+  
+    </div></div>
+</div>
+<div class="page-grid">
+<aside class="toc-col"><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#about-project"><span class="dot">1</span>Overview</a></li><li><a href="#system"><span class="dot">2</span>System</a></li><li><a href="#process"><span class="dot">3</span>Process</a></li><li><a href="#figures"><span class="dot">4</span>Figures and Video</a></li></ol><div class="toc-bar"><span></span></div></nav></aside>
+<main class="wrap narrow">
+  <section class="d-sec reveal" id="about-project"><h2>Overview</h2><p>This topic is the baseline capability of the physical OTTO, the reference that the somersault work builds on. The robot balances on its two wheels, follows a commanded speed and yaw rate, holds a commanded height, and keeps its body level with one wheel on uneven ground.</p><p>The baseline controller was developed in simulation for the ICRA 2026 OTTO platform and ported to the physical robot, where unmodeled real-world effects required substantial retuning. The robot therefore has an existing capability of driving, balancing and jumping, and this topic measures it.</p></section>
+  <section class="d-sec reveal" id="system"><h2>System</h2><table class="sys"><tr><th>Control Rate</th><td>Both controllers run as ros2_control plugins at 1000 Hz</td></tr><tr><th>Power</th><td>Cable from a bench supply on the 48 V bus</td></tr><tr><th>Software</th><td>ROS 2 Jazzy, ros2_control</td></tr></table></section>
+  <section class="d-sec" id="process"><h2 class="reveal">Process</h2><ol class="process"><li class="step reveal"><h3>Control the wheels</h3><p>A LQ servo on the wheeled inverted pendulum, with position and heading integrals in velocity form, balances the robot and tracks the commanded speed and yaw rate.</p></li><li class="step reveal"><h3>Control the legs</h3><p>The legs have four jobs.</p><ul><li>Set the posture and height from a table of hip and knee angles.</li><li>Compensate gravity.</li><li>Keep the body level by the difference between the two leg lengths.</li><li>Align the wheels by the difference between the two hip angles.</li></ul></li><li class="step reveal"><h3>Estimate the contact</h3><p>The ground force comes from the rigid-body dynamics, and a contact gate feeds the roll task and the wheel torque limit.</p></li><li class="step reveal"><h3>Sequence the commands</h3><p>A phase sequencer routes the operator command, sending the height command to the posture table and the speed and yaw rate commands to the wheel controller.</p></li></ol></section>
+  <section class="d-sec reveal" id="figures"><h2>Figures and Video</h2><div class="figs"><figure data-r="2.128"><img class="zoom" src="../assets/media/otto/bl-architecture.png" alt="Architecture of the baseline controller" loading="lazy"><figcaption>Architecture of the baseline controller</figcaption></figure><figure data-r="2.941"><img class="zoom" src="../assets/media/otto/bl-terrain.png" alt="Terrain used in the baseline experiments" loading="lazy"><figcaption>Terrain used in the baseline experiments</figcaption></figure></div></section>
+</main>
+</div>
+<footer>© 2026 Phakin Boonchanachai</footer>
+<script src="../assets/site.js?v=c70fcb89"></script>
+</body>
+</html>
