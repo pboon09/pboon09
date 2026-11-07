@@ -370,7 +370,8 @@ img.zoom { cursor: zoom-in; }
 
 .sys.data th { width: auto; padding-right: 16px; color: var(--text); border-bottom: 2px solid var(--line); }
 .sys.data td { padding-right: 16px; }
-.cap { margin: 22px 0 6px; font-size: 15px; color: var(--muted); }
+.d-sec p.cap, .cap { margin: 48px 0 10px; font-size: 15px; color: var(--muted); }
+.d-sec p.cap:first-child, .d-sec h3 + p.cap { margin-top: 12px; }
 .sys.data + .sys.data { margin-top: 20px; }
 .sys.data th[colspan], .sys.data th[rowspan] { text-align: left; }
 .sys.data { table-layout: fixed; }
@@ -398,3 +399,9 @@ img.zoom { cursor: zoom-in; }
 .thumb.logo { background: #1c1c1e; }
 .thumb.logo img { object-fit: contain; padding: 14px; }
 .thumb.logo { background: #fff; }
+.thumb.logo { display: flex; align-items: center; justify-content: center; }
+.thumb.logo img { width: auto; height: 66%; max-width: 90%; object-fit: contain; padding: 0; }
+.thumb.clear { background: #fff; }
+.thumb.clear img { object-fit: contain; padding: 4px; }
+.d-sec table + p, .d-sec table + .figs, .d-sec table + .fig-row, .d-sec table + h3, .d-sec .figs + p, .d-sec .figs + h3, .d-sec .fig-row + h3 { margin-top: 36px; }
+.d-sec figure figcaption { margin-top: 10px; }
