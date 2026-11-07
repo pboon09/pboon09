@@ -405,3 +405,4 @@ img.zoom { cursor: zoom-in; }
 .thumb.clear img { object-fit: contain; padding: 4px; }
 .d-sec table + p, .d-sec table + .figs, .d-sec table + .fig-row, .d-sec table + h3, .d-sec .figs + p, .d-sec .figs + h3, .d-sec .fig-row + h3 { margin-top: 36px; }
 .d-sec figure figcaption { margin-top: 10px; }
+.nw { white-space: nowrap; }
