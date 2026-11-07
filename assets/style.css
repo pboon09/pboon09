@@ -367,3 +367,26 @@ img.zoom { cursor: zoom-in; }
 .video, .thumb { overflow: hidden; }
 .res li { border-left-width: 4px; }
 .band { border-radius: 0 0 calc(var(--r) * 2) calc(var(--r) * 2); }
+
+.sys.data th { width: auto; padding-right: 16px; color: var(--text); border-bottom: 2px solid var(--line); }
+.sys.data td { padding-right: 16px; }
+.cap { margin: 22px 0 6px; font-size: 15px; color: var(--muted); }
+.sys.data + .sys.data { margin-top: 20px; }
+.sys.data th[colspan], .sys.data th[rowspan] { text-align: left; }
+.sys.data { table-layout: fixed; }
+.step ul { margin: 8px 0 0; padding-left: 20px; }
+.step ul li { margin: 4px 0; }
+.figs figure.sm { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+
+
+@media (max-width: 720px) { .figs.cols { grid-template-columns: 1fr; } }
+
+@media (max-width: 720px) { .figs.c3 { grid-template-columns: 1fr; } }
+.fig-row figure { margin: 0; }
+.fig-row img, .fig-row video { width: 100%; height: auto; display: block; }
+.fig-row + .fig-row, .figs + .fig-row, .fig-row + .figs { margin-top: 28px; }
+@media (max-width: 720px) { .fig-row { grid-template-columns: 1fr !important; } }
+.vgrid { grid-template-columns: 1fr 1fr !important; margin-bottom: 8px; }
+.vgrid h3 { margin: 0; text-align: center; }
+.figs + .fig-row, .fig-row + .figs, .fig-row + .fig-row { margin-top: 16px; }
