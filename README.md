@@ -29,7 +29,7 @@
 ### 📄 Publications
 
 - **Whole Body Compliance Control for Mobile Manipulators**, IEEE/ASME AIM 2026, Genova, Italy. [DOI](https://doi.org/10.1109/AIM65483.2026.11658057)
-- **OTTO: Dynamics and Control of Wheeled Bipedal Somersaulting Robot**, submitted to IEEE ICRA 2027
+- **OTTO: Dynamics and Control of Wheeled Bipedal Somersaulting Robot**, under review
 
 ---
 

@@ -40,14 +40,24 @@ if (zoomable.length) {
   const box = document.createElement('div');
   box.className = 'lightbox';
   box.setAttribute('role', 'dialog');
-  box.innerHTML = '<img alt=""><p class="lb-hint">Click the image to zoom. Click outside or press Esc to close.</p>';
+  box.innerHTML = '<img alt="">';
   document.body.append(box);
   const big = box.querySelector('img');
   const close = () => { box.classList.remove('on', 'zoomed'); document.body.style.overflow = ''; };
+  const fit = () => {
+    const r = (big.naturalWidth || 1) / (big.naturalHeight || 1);
+    const isSvg = /\.svg(\?|$)/.test(big.src);
+    const cap = isSvg ? Infinity : big.naturalWidth;
+    big.style.width = Math.min(innerWidth - 48, (innerHeight - 48) * r, cap) + 'px';
+    big.style.height = 'auto';
+  };
+  big.addEventListener('load', () => { if (!box.classList.contains('zoomed')) fit(); });
+  addEventListener('resize', () => { if (box.classList.contains('on') && !box.classList.contains('zoomed')) fit(); });
   zoomable.forEach((img) => img.addEventListener('click', () => {
     big.src = img.src;
     big.alt = img.alt;
     box.classList.remove('zoomed');
+    if (big.complete && big.naturalWidth) fit();
     box.classList.add('on');
     document.body.style.overflow = 'hidden';
   }));
@@ -58,6 +68,11 @@ if (zoomable.length) {
     const r = big.getBoundingClientRect();
     const fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
     box.classList.toggle('zoomed');
+    if (!box.classList.contains('zoomed')) fit(); else {
+      const isSvg = /\.svg(\?|$)/.test(big.src);
+      big.style.width = (isSvg ? 2400 : Math.min(2400, Math.max(big.naturalWidth * 2, innerWidth))) + 'px';
+      big.style.height = 'auto';
+    }
     if (box.classList.contains('zoomed')) {
       // keep the clicked point under the cursor after zooming in
       box.scrollLeft = fx * big.offsetWidth - e.clientX;
