@@ -68,10 +68,14 @@ nav a.active { color: var(--link); border-bottom-color: var(--logo); }
 }
 h1 { margin: 0; font-size: clamp(34px, 6vw, 58px); letter-spacing: -1px; line-height: 1.05; }
 .role { color: var(--muted); margin: 10px 0 20px; font-size: 18px; }
+.photo-flip { position: relative; display: block; width: 340px; height: 340px; padding: 0; border: 0; background: none; border-radius: 50%; cursor: pointer; perspective: 1000px; box-shadow: 14px 14px 0 var(--logo); }
+.flip-inner { position: absolute; inset: 0; display: block; transform-style: preserve-3d; transition: transform .7s; }
+.photo-flip[aria-pressed="true"] .flip-inner { transform: rotateY(180deg); }
 .photo {
-  width: 340px; height: 340px; object-fit: cover; border-radius: 50%;
-  box-shadow: 14px 14px 0 var(--logo);
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+  backface-visibility: hidden;
 }
+.photo.flip-rear { transform: rotateY(180deg); }
 .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
 .links a {
   display: flex; align-items: center; justify-content: center;
@@ -172,7 +176,10 @@ section { padding: 56px 0 8px; }
 .tl .when { font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--link); }
 .tl h3 { margin: 2px 0 2px; font-size: 20px; line-height: 1.3; }
 .tl .what { margin: 0; font-weight: 600; }
-.tl .work { color: var(--link); }
+.tl .work { color: var(--link); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.tl .work::after { content: "\00a0\203a"; display: inline-block; margin-left: 2px; transition: transform .2s; }
+.tl .work:hover { text-decoration-thickness: 2px; }
+.tl .work:hover::after { transform: translateX(4px); }
 .tl .sub { margin: 2px 0 0; color: var(--muted); font-size: 16px; }
 
 /* ---------- plain lists ---------- */
@@ -339,7 +346,8 @@ img.zoom { cursor: zoom-in; }
 /* ---------- tablet ---------- */
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr 200px; gap: 32px; }
-  .photo { width: 200px; height: 200px; box-shadow: 10px 10px 0 var(--logo); }
+  .photo-flip { width: 200px; height: 200px; }
+  .photo-flip { box-shadow: 10px 10px 0 var(--logo); }
   .edu { grid-template-columns: 160px 1fr; gap: 24px; }
   .edu-logo { width: 160px; height: 160px; }
 }
@@ -347,7 +355,7 @@ img.zoom { cursor: zoom-in; }
 /* ---------- phone ---------- */
 @media (max-width: 640px) {
   .hero { grid-template-columns: 1fr; }
-  .photo { order: -1; width: 180px; height: 180px; }
+  .photo-flip { order: -1; width: 180px; height: 180px; }
   .edu { grid-template-columns: 1fr; }
   .pub { grid-template-columns: 1fr; gap: 6px; }
   .grid { grid-template-columns: 1fr; gap: 32px; }

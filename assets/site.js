@@ -117,3 +117,6 @@ if (tocLinks.length) {
   addEventListener('resize', update);
   update();
 }
+
+const flip = document.querySelector('.photo-flip');
+if (flip) flip.addEventListener('click', () => flip.setAttribute('aria-pressed', flip.getAttribute('aria-pressed') !== 'true'));
