@@ -436,8 +436,8 @@ img.zoom { cursor: zoom-in; }
 .side { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
 .side > div > .cap { margin-top: 0; }
 .side > .figs + .figs { margin-top: 0; }
-.side { align-items: start; }
-.side .stack { display: grid; gap: 24px; }
+.side { align-items: stretch; grid-template-columns: 1fr 1.17fr; }
+.side .stack { display: grid; gap: 24px; align-content: space-between; }
 .side .stack > .figs { margin-top: 0; }
 @media (max-width: 720px) { .side { grid-template-columns: 1fr; } }
-.figs img[src$=".svg"], .fig-row img[src$=".svg"], .step img[src$=".svg"] { background: #fff; }
+.figs img[src*=".svg"], .fig-row img[src*=".svg"], .step img[src*=".svg"] { background: #fff; }
